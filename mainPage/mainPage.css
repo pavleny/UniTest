@@ -1,3 +1,29 @@
-p {
-    font-size: 50px;
+.fon {
+    position: relative;
+    width: 100%;
+    opacity:0.4;
+    height: 100%;
+}
+.fon-image {
+    background: #000;
+    text-align: center;
+}
+
+.fon-image-url {
+    background: url(/img/fon2.jpg);
+}
+
+.div-wr {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    color: #FFF;
+    font-size: 55px;
+}
+
+
+.heading {
+    margin: 20px auto;
+    width: 20%;
+    text-align: center;
 }

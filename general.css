@@ -4,7 +4,7 @@
 }
 header {
     height: 100px;
-    background: linear-gradient(to right, #66A3D2, 	#033E6B);
+    background: linear-gradient(to right, #673ab7, 	#9c27b0);
     box-shadow: 0 0 10px blue;
 }
 a {
@@ -47,4 +47,66 @@ nav {
 
 .img-ref {
     align-items: center;
+}
+
+
+
+
+footer {
+    background: linear-gradient(to right, #673ab7,  #9c27b0);
+    height: 240px;
+}
+.footer-div {
+    display: flex;
+    justify-content: center;
+    color: white;
+    width: 100%;
+}
+footer div {
+    margin-top: 25px;
+    width: 250px;
+}
+footer div h1{
+    margin-bottom: 15px;
+}
+footer div h3{
+    margin-bottom: 15px;
+}
+footer div p{
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+.footer-table tr td {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    text-align: center;
+}
+.footer-table tr td .fab{
+    font-size: 30px;
+    transition: 0.3s;
+}
+.footer-table tr td .fab:hover{
+    transform: scale(1.5);
+}
+.footer-flex {
+    margin: 20px 20px;
+}
+.fa-instagram {
+    color: #e15e5d;
+}
+.fa-facebook-square {
+    color: #4267b2;
+}
+.fa-telegram {
+    color: #1288c3;
+}
+.fa-twitter-square {
+    color: #1da1f2;
+}
+.fa-viber {
+    color: #7d519e;
+}
+.fa-vk {
+    color: #5181b8;
 }
