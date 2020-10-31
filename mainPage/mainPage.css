@@ -4,13 +4,8 @@
     opacity:0.4;
     height: 100%;
 }
-.fon-image {
+.fon-image { 
     background: #000;
-    text-align: center;
-}
-
-.fon-image-url {
-    background: url(/img/fon2.jpg);
 }
 
 .div-wr {
