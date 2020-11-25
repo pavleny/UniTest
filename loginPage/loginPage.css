@@ -79,7 +79,7 @@ section .container .user .formBx form input {
     letter-spacing: 1px;
     font-weight: 300;
 }
-section .container .user .formBx form input[type="submit"] {
+section .container .user .formBx form input[type="button"] {
     max-width: 100px;
     background: #677eff;
     color: #fff;
@@ -124,6 +124,7 @@ section .container.active .signupBx .imgBx {
 }
 
 
+
 section .container .signinBx .formBx {
     left: 0;
 }
@@ -148,4 +149,20 @@ section .container.active .signinBx .imgBx {
     section .container .user .formBx {
         width: 100%;
     }
+}
+
+
+
+#nameError1, 
+#nameError2,
+#fullError1,
+#emailError1,
+#emailError2, 
+#emailError3,
+#passError1,
+#passError2,
+#login-error {
+    color: red;
+    font-size: 10px;
+    display: none;
 }
