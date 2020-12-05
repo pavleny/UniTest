@@ -1,0 +1,49 @@
+footer {
+    margin-top: -25px;
+}
+.level {
+    background: url(../img/fon.png) no-repeat;
+    height: 100vh;
+    background-size: 100%;
+}
+.level-text {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+    height: 100vh;
+}
+.level-text h1 {
+    text-align: center;
+    padding: 20px;
+    color: #0b013c ;
+    font-size: 45px;
+}
+.level-desc {
+    max-width: 700px;
+    border: 2px solid #0b013c;
+    margin: 0 auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.level-desc a {
+    display: block;
+    padding: 25px;
+    color: #0b013c;
+    font-size: 25px;
+    font-weight: 600;
+    border: 3px solid #ffffff;
+    position: relative;
+}
+.level-desc a:hover {
+    border-bottom: 3px solid #005590;
+    color: #005590;
+    transition: .8s;
+    text-decoration: underline;
+}
+.level-desc a:hover::after {
+    border: 20px solid transparent;
+    border-right: 20px solid #005590;
+    content:"";
+    position: absolute;
+}
