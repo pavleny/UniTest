@@ -1,5 +1,154 @@
 let levelId = sessionStorage.getItem('levelId');
-let taskArr = [];
+let warningMessage;
+
+let requestURL = `http://26.116.247.102:8080/question/parse?id_level=${levelId}`;
+let request = new XMLHttpRequest();
+request.open('GET', requestURL, true);
+
+request.responseType = 'json';
+request.send();
+request.onload = function() {
+    var section = request.response;
+    populateTasks(section);
+}
+
+function populateTasks(jsonObj) {
+    for(let i = 0; i < jsonObj.length; i++) {
+        let navElem = document.createElement('div');
+        navElem.classList.add(`elem-${i}`);
+        navElem.classList.add('nav-elem');
+        navElem.innerHTML = `${i + 1}`;
+        navElem.id = `${i}`;
+        navElem.addEventListener('click', changeClass);
+        document.querySelector('.question-nav').appendChild(navElem);
+
+        let mainDiv = document.createElement('div');
+        mainDiv.classList.add(`main-${i}`);
+        mainDiv.classList.add('main-div');
+        document.querySelector(`.question-container`).appendChild(mainDiv);
+
+        let imgDiv = document.createElement('div');
+        imgDiv.classList.add(`img-div-${i}`);
+        imgDiv.classList.add('img-div');
+        document.querySelector(`.main-${i}`).appendChild(imgDiv);
+
+        let image = document.createElement('img');
+        image.classList.add('images');
+        if(jsonObj[i]['image'] === null) {
+            image.src = `../img/mainImg/${Math.floor(Math.random() * 5)}.jpg`;
+        } else {
+            image.src = `http://26.116.247.102:8080/image/${jsonObj[i]['image']}`;
+        }
+        document.querySelector(`.img-div-${i}`).appendChild(image);
+
+        let questionDiv = document.createElement('div');
+        questionDiv.classList.add(`question-div-${i}`);
+        questionDiv.classList.add('question-div');
+        document.querySelector(`.main-${i}`).appendChild(questionDiv);
+
+        let h3 = document.createElement('h3');
+        h3.classList.add('question-text');
+        h3.innerHTML = `${jsonObj[i]['name']}`;
+        document.querySelector(`.question-div-${i}`).appendChild(h3);
+
+        let answersDiv = document.createElement('div');
+        answersDiv.classList.add(`answers-div-${i}`);
+        answersDiv.classList.add('answers-div');
+        document.querySelector(`.question-div-${i}`).appendChild(answersDiv);
+
+        for(let j = 0; j < jsonObj[i]['answers'].length; j++) {
+            advice = jsonObj[i]['answers'][j]['advice']
+
+            let div2 = document.createElement('div');
+            div2.classList.add(`variants-${j}-${i}`);
+            div2.classList.add('variants-div');
+            document.querySelector(`.answers-div-${i}`).appendChild(div2);
+
+            let input = document.createElement('input');
+            input.type = 'checkbox';
+            input.id = `${jsonObj[i]['answers'][j]['isCorrect']}`;
+            input.classList.add(`s${j}`);
+            input.name = `${jsonObj[i]['answers'][j]['advice']}`;
+            input.classList.add(`inputs`);
+            if(i === 0) {
+                input.classList.add('active-check');
+            }
+            document.querySelector(`.variants-${j}-${i}`).appendChild(input);
+
+            let span = document.createElement('span');
+            span.innerHTML = `${jsonObj[i]['answers'][j]['text']}`;
+            span.classList.add('span-text');
+            document.querySelector(`.variants-${j}-${i}`).appendChild(span);
+        }
+
+        if(i !== 0) {
+            mainDiv.classList.add('unvisible-questions');
+        } else {
+            navElem.classList.add('active-nav-elem');
+        }
+    }
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('button-div');
+    document.querySelector('.question-container').appendChild(buttonDiv);
+
+    let button2 = document.createElement('button');
+    button2.classList.add('btn-advice');
+    button2.classList.add('buttons');
+    button2.addEventListener('click', showSupport);
+    button2.innerHTML = 'Підсказка';
+    document.querySelector(`.button-div`).appendChild(button2);
+
+    let button = document.createElement('button');
+    button.classList.add('btn-check');
+    button.addEventListener('click', checkAnswers);
+    button.innerHTML = 'Перевірити';
+    button.classList.add('buttons');
+    document.querySelector(`.button-div`).appendChild(button);
+
+    let warning = document.createElement('p');
+    warning.classList.add('warning-text');
+    warning.innerHTML = 'У вам недостатньо бонусів щоб отримати підсказку';
+    document.querySelector('.question-container').appendChild(warning);
+}
+
+
+
+
+function showSupport() {
+    let advices = document.querySelector('.active-check');
+    let bonuses = localStorage.getItem('bonuses');
+    warningMessage = document.querySelector('.warning-text');
+    if(bonuses < 1000) {
+        alert(`У вас недостатьно бонусів! Ваші бонуси: ${bonuses}`);
+    } else {
+        alert(advices.name);
+        let adk;
+    }
+}
+
+
+function checkAnswers() {
+    let checkedArr = document.getElementsByClassName('active-check');
+    let currentNavElem = document.querySelector('.active-nav-elem');
+    let correct = [];
+    for(let i = 0; i < checkedArr.length; i++) {
+        if(checkedArr[i].id === 'true' && checkedArr[i].checked ||
+            checkedArr[i].id === 'false' && !checkedArr[i].checked) {
+            correct.push(true);
+        } else {
+            correct.push(false);
+        }
+    }
+    for(let i = 0; i < correct.length; i++) {
+        if(correct[i] === false) {
+            currentNavElem.style = 'background: red; color: #fff';
+            break;
+        }
+        currentNavElem.style = 'background: green; color: #fff';
+    }
+}
+
+/*let taskArr = [];
 
 let requestURL = 'http://26.116.247.102:8080/question';
 let request = new XMLHttpRequest();
@@ -91,4 +240,4 @@ window.onload = function() {
     button.addEventListener('click', checkAnswers);
     button.innerHTML = 'Перевірити';
     document.querySelector(`.question-container`).appendChild(button);
-}
+}*/

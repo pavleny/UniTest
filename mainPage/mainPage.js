@@ -117,6 +117,8 @@ function populateSections(jsonObj) {
             a.innerHTML = `${cources[i]['themes'][j]['name']}`;
             a.href = '../themePage/themePage.html';
             a.classList.add('ref');
+            a.id = `${cources[i]['themes'][j]['id_theme']}`;
+            a.addEventListener('click', goToTheme)
             document.querySelector(`.li-${j}-${i}`).appendChild(a);
         }
 
@@ -186,10 +188,16 @@ function populateRecommended(jsonObj) {
         document.querySelector(`.button-div-${i}`).appendChild(button);
     }
 }
-
-window.onload = function() {
+/*
+window.onload = function () {
     alert(localStorage.getItem('nick'));
     alert(localStorage.getItem('fullName'));
     alert(localStorage.getItem('email'));
     alert(localStorage.getItem('password'));
+    alert(localStorage.getItem('bonuses'));
+}
+*/
+function goToTheme() {
+    document.location.href = '../themePage/themePage.html';
+    sessionStorage.setItem('theme', this.id);
 }
