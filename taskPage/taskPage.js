@@ -111,31 +111,20 @@ function populateTasks(jsonObj) {
     document.querySelector('.question-container').appendChild(warning);
 }
 
-function changeClass() {
-    let checkArr = document.getElementsByClassName('active-check');
-    while(checkArr.length !== 0) {
-        let i = 0;
-        checkArr[i].classList.remove('active-check');
-    }
 
-    let navArr = document.getElementsByClassName('nav-elem');
-    let questionArr = document.getElementsByClassName('main-div');
-    for(let i = 0; i < navArr.length; i++) {
-        if(navArr[i].classList.contains('active-nav-elem')) {
-            questionArr[i].classList.add('unvisible-questions');
-            navArr[i].classList.remove('active-nav-elem');
-            break;
-        }
-    }
-    questionArr[this.id].classList.remove('unvisible-questions');
-    this.classList.add('active-nav-elem');
 
-    let a = questionArr[this.id].className.slice(0, 6);
-    let inputsArr = document.querySelectorAll(`.${a} .question-div .answers-div .variants-div input`);
-    for(let i = 0; i < inputsArr.length; i++) {
-        inputsArr[i].classList.add('active-check');
+
+function showSupport() {
+    let advices = document.querySelector('.active-check');
+    let bonuses = localStorage.getItem('bonuses');
+    warningMessage = document.querySelector('.warning-text');
+    if(bonuses < 1000) {
+        alert(`У вас недостатьно бонусів! Ваші бонуси: ${bonuses}`);
+    } else {
+        alert(advices.name);
     }
 }
+
 
 function checkAnswers() {
     let checkedArr = document.getElementsByClassName('active-check');
@@ -157,7 +146,6 @@ function checkAnswers() {
         currentNavElem.style = 'background: green; color: #fff';
     }
 }
-
 
 /*let taskArr = [];
 
