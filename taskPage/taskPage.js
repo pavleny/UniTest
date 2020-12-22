@@ -1,7 +1,4 @@
 let levelId = sessionStorage.getItem('levelId');
-<<<<<<< Updated upstream
-let taskArr = [];
-=======
 let warningMessage;
 
 let requestURL = `http://26.116.247.102:8080/question/parse?id_level=${levelId}`;
@@ -89,17 +86,29 @@ function populateTasks(jsonObj) {
         } else {
             navElem.classList.add('active-nav-elem');
         }
-           let buttonDiv = document.createElement('div');
-   		 	buttonDiv.classList.add('button-div');
-    		document.querySelector('.question-container').appendChild(buttonDiv);
-
-    		let button2 = document.createElement('button');
-    		button2.classList.add('btn-advice');
-    		button2.classList.add('buttons');
-   			 button2.addEventListener('click', showSupport);
-    		button2.innerHTML = 'Підсказка';
-    		document.querySelector(`.button-div`).appendChild(button2);
     }
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('button-div');
+    document.querySelector('.question-container').appendChild(buttonDiv);
+
+    let button2 = document.createElement('button');
+    button2.classList.add('btn-advice');
+    button2.classList.add('buttons');
+    button2.addEventListener('click', showSupport);
+    button2.innerHTML = 'Підсказка';
+    document.querySelector(`.button-div`).appendChild(button2);
+
+    let button = document.createElement('button');
+    button.classList.add('btn-check');
+    button.addEventListener('click', checkAnswers);
+    button.innerHTML = 'Перевірити';
+    button.classList.add('buttons');
+    document.querySelector(`.button-div`).appendChild(button);
+
+    let warning = document.createElement('p');
+    warning.classList.add('warning-text');
+    warning.innerHTML = 'У вам недостатньо бонусів щоб отримати підсказку';
+    document.querySelector('.question-container').appendChild(warning);
 }
 
 
@@ -113,7 +122,6 @@ function showSupport() {
         alert(`У вас недостатьно бонусів! Ваші бонуси: ${bonuses}`);
     } else {
         alert(advices.name);
-        let adk;
     }
 }
 
@@ -121,7 +129,6 @@ function showSupport() {
 function checkAnswers() {
     let checkedArr = document.getElementsByClassName('active-check');
     let currentNavElem = document.querySelector('.active-nav-elem');
-
     let correct = [];
     for(let i = 0; i < checkedArr.length; i++) {
         if(checkedArr[i].id === 'true' && checkedArr[i].checked ||
@@ -140,38 +147,7 @@ function checkAnswers() {
     }
 }
 
-
-
-function changeClass() {
-    let checkArr = document.getElementsByClassName('active-check');
-    while(checkArr.length !== 0) {
-        let i = 0;
-        checkArr[i].classList.remove('active-check');
-    }
-
-    
-    let navArr = document.getElementsByClassName('nav-elem');
-    let questionArr = document.getElementsByClassName('main-div');
-    for(let i = 0; i < navArr.length; i++) {
-        if(navArr[i].classList.contains('active-nav-elem')) {
-            questionArr[i].classList.add('unvisible-questions');
-            navArr[i].classList.remove('active-nav-elem');
-            break;
-        }
-    }
-    questionArr[this.id].classList.remove('unvisible-questions');
-    this.classList.add('active-nav-elem');
-
-    let a = questionArr[this.id].className.slice(0, 6);
-    let inputsArr = document.querySelectorAll(`.${a} .question-div .answers-div .variants-div input`);
-    for(let i = 0; i < inputsArr.length; i++) {
-        inputsArr[i].classList.add('active-check');
-    }
-}
-
-
 /*let taskArr = [];
->>>>>>> Stashed changes
 
 let requestURL = 'http://26.116.247.102:8080/question';
 let request = new XMLHttpRequest();
@@ -263,4 +239,4 @@ window.onload = function() {
     button.addEventListener('click', checkAnswers);
     button.innerHTML = 'Перевірити';
     document.querySelector(`.question-container`).appendChild(button);
-}
+}*/

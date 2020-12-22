@@ -15,6 +15,7 @@ let passError1 = document.getElementById('passError1');
 let passError2 = document.getElementById('passError2');
 
 let requestURL;
+let requestURL2
 
 let userName = document.getElementById('userName');
 let fullName = document.getElementById('fullName');
@@ -183,11 +184,12 @@ function sendRequest() {
     localStorage.setItem('fullName', fullName.value);
     localStorage.setItem('email', email.value);
     localStorage.setItem('password', pass1.value);
-   // localStorage.setItem('image', image.value);
+    localStorage.setItem('bonuses', 0);
+
     var xhr = new XMLHttpRequest();
     xhr.open("POST", `${requestURL}?`, true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(`nickname=${userName.value}&email=${email.value}&password=${pass1.value}&role=User&bonuses=0&fullName=${fullName.value}&activationCode`);
+    xhr.send(`nickname=${userName.value}&email=${email.value}&password=${pass1.value}&role=User&bonuses=0&fullName=${fullName.value}&image`);
 }
 //--------------------------------------------------------------------------
 
@@ -200,8 +202,41 @@ let pass_in = document.getElementById('pass-in');
 let login = document.getElementById('log-in');
 let text_in = document.getElementById('login-error');
 
+
 function userLogIn() {
-    for(let i = 0; i< users.length; i++) {
+    requestURL2 = `http://26.116.247.102:8080/account/login?nickname=${userName_in.value}&password=${pass_in.value}`;
+    let request2 = new XMLHttpRequest();
+    request2.open('GET', requestURL2, true);
+
+    request2.responseType = 'json';
+    request2.send();
+    request2.onload = function() {
+        var section2 = request2.response;
+        populateLogin(section2);
+    }
+
+    function populateLogin(jsonObj) {
+        let user = JSON.parse(JSON.stringify(jsonObj));
+        if(!user) {
+            userName_in.style = 'border: 2px solid red';
+            pass_in.style = 'border: 2px solid red';
+            text_in.style = 'display: block';
+        } else {
+            localStorage.clear();
+            localStorage.setItem('nick', user.nickname);
+            localStorage.setItem('fullName', user.fullName);
+            localStorage.setItem('email', user.email);
+            localStorage.setItem('password', user.password);
+            localStorage.setItem('bonuses', user.bonuses)
+
+            userName_in.style = 'border: none';
+            pass_in.style = 'border: none';
+            text_in.style = 'display: none';
+
+            document.location.href = '../mainPage/mainPage.html';
+        }
+    }
+    /*for(let i = 0; i< users.length; i++) {
         if(userName_in.value === users[i]['nickname'] && pass_in.value === users[i]['password']) {
             localStorage.clear();
             localStorage.setItem('nick', userName_in.value);
@@ -215,5 +250,5 @@ function userLogIn() {
             pass_in.style = 'border: 2px solid red';
             text_in.style = 'display: block';
         }
-    }
+    }*/
 }
