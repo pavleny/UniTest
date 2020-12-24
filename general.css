@@ -50,7 +50,10 @@ nav {
     .topnav {
         top: 150px;
         background: linear-gradient(to right, #673ab7,  #9c27b0);
+<<<<<<< Updated upstream
+=======
 
+>>>>>>> Stashed changes
     }
     .topnav a {
         display: none;
