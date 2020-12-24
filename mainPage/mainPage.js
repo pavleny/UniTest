@@ -6,58 +6,7 @@ menu.onclick = function burger() {
         x.className = 'topnav';
     }
 }
-/*
-let idSection;
-let isOpened = false;
-let arrSession = [];
-
-let requestURL2 = 'http://26.116.247.102:8080/section';
-let request2 = new XMLHttpRequest();
-request2.open('GET', requestURL2, true);
-
-request2.responseType = 'json';
-request2.send();
-request2.onload = function() {
-    var section2 = request2.response;
-    populateSections(section2);
-    //checkList();
-  }
-
-  function populateSections(jsonObj) {
-      for(let i = 0; i < jsonObj.length; i++) {
-        let ul = document.createElement('ul');
-        ul.innerHTML = `${jsonObj[i]['name']}`;
-        ul.classList.add('options');
-        ul.id = `${i}s`;
-        document.querySelector('.sections-list').appendChild(ul);
-
-        let hr = document.createElement('hr');
-        document.getElementById(`${i}s`).appendChild(hr);
-
-        for(let j = 0; j < jsonObj[i]['themes'].length; j++) {
-            let li = document.createElement('li');
-            li.innerHTML = `${jsonObj[i]['themes'][j]['name']}`;
-            li.classList.add('links');
-            li.addEventListener('click', goToTheme);
-            li.id = jsonObj[i]['themes'][j]['id_theme'];
-            document.getElementById(`${i}s`).appendChild(li);
-        }
-      }
-      let sections = document.getElementsByClassName('options');
-      for(let i = 0; i < sections.length; i++) {
-          if(sections[i].children.length < 2) {
-              let h3 = document.createElement('h3');
-              h3.innerHTML = 'Urokov Poke NEt';
-              document.getElementById(`${i}s`).appendChild(h3);       
-            } 
-        } 
-    }
-
-function goToTheme() {
-    document.location.href = '../themePage/themePage.html';
-    sessionStorage.setItem('theme', this.id);
-}
-*/
+//-------------------------------
 
 let cources = [];
 let recommended = [];
@@ -188,15 +137,15 @@ function populateRecommended(jsonObj) {
         document.querySelector(`.button-div-${i}`).appendChild(button);
     }
 }
-/*
+
 window.onload = function () {
-    alert(localStorage.getItem('nick'));
-    alert(localStorage.getItem('fullName'));
-    alert(localStorage.getItem('email'));
-    alert(localStorage.getItem('password'));
-    alert(localStorage.getItem('bonuses'));
+    //alert(localStorage.getItem('nick'));
+    //alert(localStorage.getItem('fullName'));
+    //alert(localStorage.getItem('email'));
+    //alert(localStorage.getItem('role'));
+    //alert(localStorage.getItem('bonuses'));
 }
-*/
+
 function goToTheme() {
     document.location.href = '../themePage/themePage.html';
     sessionStorage.setItem('theme', this.id);

@@ -184,6 +184,7 @@ function sendRequest() {
     localStorage.setItem('fullName', fullName.value);
     localStorage.setItem('email', email.value);
     localStorage.setItem('password', pass1.value);
+    localStorage.setItem('role', 'User');
     localStorage.setItem('bonuses', 0);
 
     var xhr = new XMLHttpRequest();
@@ -223,9 +224,11 @@ function userLogIn() {
             text_in.style = 'display: block';
         } else {
             localStorage.clear();
+            localStorage.setItem('idUser', user.id_account);
             localStorage.setItem('nick', user.nickname);
             localStorage.setItem('fullName', user.fullName);
             localStorage.setItem('email', user.email);
+            localStorage.setItem('role', user.role);
             localStorage.setItem('password', user.password);
             localStorage.setItem('bonuses', user.bonuses)
 
@@ -236,19 +239,4 @@ function userLogIn() {
             document.location.href = '../mainPage/mainPage.html';
         }
     }
-    /*for(let i = 0; i< users.length; i++) {
-        if(userName_in.value === users[i]['nickname'] && pass_in.value === users[i]['password']) {
-            localStorage.clear();
-            localStorage.setItem('nick', userName_in.value);
-            localStorage.setItem('fullName', users[i]['fullname']);
-            localStorage.setItem('email', users[i]['email']);
-            localStorage.setItem('password', pass_in.value);
-
-            document.location.href = '../mainPage/mainPage.html';
-        } else {
-            userName_in.style = 'border: 2px solid red';
-            pass_in.style = 'border: 2px solid red';
-            text_in.style = 'display: block';
-        }
-    }*/
 }
