@@ -1,0 +1,25 @@
+.main {
+    width: 700px;
+    height: 400px;
+    margin:20px auto;
+    position: relative;
+}
+.main::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.8);
+    z-index: 2;
+}
+.text-div {
+    color: #ffffff;
+    position: relative; 
+    z-index: 3;
+    padding: 40px;
+}
+h3 {
+    padding: 100px 0;
+}

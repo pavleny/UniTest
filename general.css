@@ -5,7 +5,7 @@
 }
 header {
     height: 100px;
-    background: linear-gradient(to right, #66A3D2, 	#033E6B);
+    background: linear-gradient(to right, #673ab7, 	#9c27b0);
     box-shadow: 0 0 10px blue;
 }
 a {
@@ -49,7 +49,7 @@ nav {
 @media screen and (max-width: 887px) {
     .topnav {
         top: 150px;
-        background: linear-gradient(to right,#326e9c,#033E6B);
+        background: linear-gradient(to right, #673ab7,  #9c27b0);
 
     }
     .topnav a {
@@ -64,7 +64,7 @@ nav {
     .topnav.responsive {
         position: relative;
         width: 100%;
-        z-index: 1;
+        z-index: 10;
     }
     .topnav.responsive a.icon {
         position: absolute;
@@ -101,7 +101,7 @@ nav {
 
 
 footer {
-    background: linear-gradient(to right, #66A3D2, 	#033E6B);
+    background: linear-gradient(to right, #673ab7,  #9c27b0);
     height: 240px;
 }
 .footer-div {

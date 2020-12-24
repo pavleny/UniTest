@@ -4,7 +4,7 @@
         <title>UniTest</title>
         <meta charset="utf-8">
         <link href="../general.css" rel="stylesheet">
-        <link href="./mainPage.css" rel="stylesheet">
+        <link href="./profilePage.css" rel="stylesheet">
         <script src="https://kit.fontawesome.com/80cd391787.js" crossorigin="anonymous"></script>
     </head>
     
@@ -12,7 +12,7 @@
         <header>
             <div class="header-div">
                 <div class="logo">
-                    <a href="./mainPage.html" class="img-ref"><img src="../img/logo1.jpg" class="imglogo"></a>
+                    <a href="./mainPage.html" class="img-ref"><img src="../img/logo.png" class="imglogo"></a>
                 </div>
                 <nav>
                     <div class="topnav" id="myTopnav">
@@ -26,26 +26,45 @@
         </header>
 
         <main>
-            <section class="fon">
-                <div class="fon-image">
-                    <h1 class="div-wr">Дистанційна освіта</h1>
+            <div class="wrapper">
+                <div class="left">
+                    <img src="https://i.imgur.com/cMy8V5j.png" 
+                    alt="user" width="100">
+                    <h4 id="nickName"></h4>
+                     <p id="userStatus"></p>
                 </div>
-            </section>
-
-            <div class="heading">
-                <h1>Рекомендуємо наші найпопулярніші курси</h1>
+                <div class="right">
+                    <div class="info">
+                        <h3>Інформація</h3>
+                        <div class="info_data">
+                             <div class="data">
+                                <h4>Email</h4>
+                                <p id="userEmail" class="change"></p>
+                                <input type="text" id="newEmail" class="change-via">
+                             </div>
+                             <div class="data">
+                               <h4>Full Name</h4>
+                                <p id="userFullName" class="change"></p>
+                                <input type="text" id="newFullName" class="change-via">
+                          </div>
+                        </div>
+                        <div class="projects_data">
+                            <div class="data">
+                               <h4>Bonuses</h4>
+                               <p id="userBonuses"></p>
+                            </div>
+                            <div class="data">
+                              <h4>Password</h4>
+                               <p id="userPassword" class="change"></p>
+                               <input type="text" id="newPassword" class="change-via">
+                         </div>
+                       </div>
+                    </div>
+                  
+                    <button id="editButton" class="editButton btns">Редагувати</button>
+                    <button id="submitButton" class="submitButton btns">Зберегти</button>
+                </div>
             </div>
-            <div class="popular">
-                
-            </div>
-            <div class="all_heading">
-                <h1>Всі курси</h1>
-            </div>
-            <div class="container">
-                
-            </div>
-              
-            
         </main>
 
         <footer>
@@ -81,6 +100,6 @@
                 </div>
             </div>
         </footer>
-        <script src="./mainPage.js"></script>
+        <script src="./profilePage.js"></script>
     </body>
 </html>
